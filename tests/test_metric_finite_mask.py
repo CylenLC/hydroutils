@@ -21,10 +21,10 @@ def _oracle(obs, pred):
     valid = np.isfinite(obs) & np.isfinite(pred)
     obs = obs[valid]
     pred = pred[valid]
-    result = {
-        name: np.nan
-        for name in ("Bias", "RMSE", "ubRMSE", "Corr", "R2", "NSE", "KGE", "FHV", "FLV")
-    }
+    result = dict.fromkeys(
+        ("Bias", "RMSE", "ubRMSE", "Corr", "R2", "NSE", "KGE", "FHV", "FLV"),
+        np.nan,
+    )
     if obs.size == 0:
         return result
 
